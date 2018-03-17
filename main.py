@@ -1,17 +1,9 @@
 import requests
-import json
 
 getURLCards = "http://www.clashapi.xyz/api/cards"
 cards = requests.get(url = getURLCards).json()
-cardsOutput = ""
+cardsOutput = "name, rarity, type, elixirCost, arena\n"
 cardKeys = ["name", "rarity", "type", "elixirCost", "arena"]
-
-for c in cardKeys:
-    cardsOutput += c
-    cardsOutput += ","
-cardsOutput = cardsOutput[:len(cardsOutput) - 1]
-cardsOutput += "\n"
-
 
 for c in cards:
     for key in cardKeys:
@@ -20,21 +12,16 @@ for c in cards:
     cardsOutput += "\n"
 cardsOutput = cardsOutput[:len(cardsOutput) - 2]
 
+#print(cardsOutput)
+
 f = open("cards.csv","w")
 f.write(cardsOutput)
 f.close()
 
 getURLarenas = "http://www.clashapi.xyz/api/arenas"
 arenas = requests.get(url = getURLarenas).json()
-arenaOutput = ""
-arenaKeys = ["name","victoryGold","minTrophies"]
-
-for a in arenaKeys:
-    arenaOutput += a
-    arenaOutput += ","
-arenaOutput = arenaOutput[:len(arenaOutput) - 1]
-arenaOutput += "\n"
-
+arenaOutput = "name, victoryGold, minTrophies, order\n"
+arenaKeys = ["name","victoryGold","minTrophies", "order"]
 
 for a in arenas:
     for key in arenaKeys:
