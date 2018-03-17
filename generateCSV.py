@@ -28,7 +28,7 @@ for a in arenas:
     for key in arenaKeys:
         arenaOutput += str(a[key])
         arenaOutput += ","
-    cardsOutput = cardsOutput[:len(cardsOutput)-1]
+    arenaOutput = arenaOutput[:len(arenaOutput)-1]
     arenaOutput += "\n"
 arenaOutput = arenaOutput[:len(arenaOutput) - 2]
 
