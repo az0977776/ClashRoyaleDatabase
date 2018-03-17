@@ -9,6 +9,7 @@ for c in cards:
     for key in cardKeys:
         cardsOutput += str(c[key])
         cardsOutput += ","
+    cardsOutput = cardsOutput[:len(cardsOutput)-1]
     cardsOutput += "\n"
 cardsOutput = cardsOutput[:len(cardsOutput) - 2]
 
@@ -27,6 +28,7 @@ for a in arenas:
     for key in arenaKeys:
         arenaOutput += str(a[key])
         arenaOutput += ","
+    cardsOutput = cardsOutput[:len(cardsOutput)-1]
     arenaOutput += "\n"
 arenaOutput = arenaOutput[:len(arenaOutput) - 2]
 
