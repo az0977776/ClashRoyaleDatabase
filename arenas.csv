@@ -1,14 +1,14 @@
-name,victoryGold,minTrophies
-Training Camp,0,0,
-Goblin Stadium,5,0,
-Bone Pit,7,400,
-Barbarian Bowl,9,800,
-P.E.K.K.A.'s Playhouse,11,1100,
-Spell Valley,12,1400,
-Builder's Workshop,14,1700,
-Royal Arena,15,2000,
-Frozen Peak,16,2300,
-Jungle Arena,18,2600,
-Hog Mountain,20,3000,
-Electro Valley,22,3400,
-Legendary Arena,24,3800
+name, victoryGold, minTrophies, order
+Training Camp,0,0,0,
+Goblin Stadium,5,0,1,
+Bone Pit,7,400,2,
+Barbarian Bowl,9,800,3,
+P.E.K.K.A.'s Playhouse,11,1100,4,
+Spell Valley,12,1400,5,
+Builder's Workshop,14,1700,6,
+Royal Arena,15,2000,7,
+Frozen Peak,16,2300,8,
+Jungle Arena,18,2600,9,
+Hog Mountain,20,3000,10,
+Electro Valley,22,3400,11,
+Legendary Arena,24,3800,12

@@ -1,4 +1,4 @@
-name,rarity,type,elixirCost,arena
+name, rarity, type, elixirCost, arena
 Arrows,Common,Spell,3,0,
 Bomber,Common,Troop,3,0,
 Archers,Common,Troop,3,0,
@@ -79,4 +79,5 @@ Heal,Rare,Spell,3,10,
 Cannon Cart,Epic,Troop,5,10,
 Mega Knight,Legendary,Troop,7,10,
 Royal Ghost,Legendary,Troop,3,10,
-Zappies,Rare,Troop,4,11
+Zappies,Rare,Troop,4,11,
+Magic Archer,Legendary,Troop,4,11
