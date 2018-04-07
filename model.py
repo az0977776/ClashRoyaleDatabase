@@ -4,20 +4,21 @@ from tabulate import tabulate
 
 
 class Model:
+    datab = None
+    cursor = None
+
     def __init__(self):
         self.username = tk.StringVar()
         self.password = tk.StringVar()
-        self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
-
 
     def accessDB(self):
         self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
+        self.cursor = self.datab.cursor()
 
     def get_table(self, comm):
-        cursor = self.datab.cursor()
-        cursor.execute(comm)
+        self.cursor.execute(comm)
         table = []
-        for row in cursor:
+        for row in self.cursor:
             table += [row]
 
         return tabulate(table)

@@ -1,20 +1,14 @@
 from tkinter import *
 
-
 class Window(Frame):
 
     def __init__(self, master=None):
-        self.password = "default password"
-        self.username = "default username"
         Frame.__init__(self, master)
         self.master = master
 
         self.init_window()
 
     def init_window(self):
-        self.username = StringVar()
-        self.password = StringVar()
-
         self.get_username()
         self.get_password()
 
@@ -23,17 +17,20 @@ class Window(Frame):
 
         self.ok = Button(self, text="OK")
         self.quit_button = Button(self, text="Exit")
-        self.show_cards = Button(self, text="SHOW CARDS")
+        self.show_cards = Button(self, text="CARDS")
         self.text = Text(self, height=30, width=50)
-        self.show_arenas = Button(self, text="SHOW ARENAS")
-        self.show_chests = Button(self, text="SHOW CHESTS")
+        self.show_arenas = Button(self, text="ARENAS")
+        self.show_chests = Button(self, text="CHESTS")
+        self.show_player = Button(self, text="PLAYER")
 
         self.show_cards.place(x=30,y=50)
         self.ok.place(x=450, y=2)
         self.quit_button.place(x=650, y=2)
         self.text.place(x=20, y=80)
-        self.show_arenas.place(x=40, y=50)
-        #self.show_chests(x=50, y=50)
+        self.show_arenas.place(x=100, y=50)
+        self.show_chests.place(x=180, y=50)
+        self.show_player.place(x=260, y=50)
+
 
     def get_username(self):
         entry_text = Label(self.master, text="USERNAME: ")
