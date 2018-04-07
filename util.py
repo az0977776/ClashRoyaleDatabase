@@ -4,7 +4,7 @@ def showAllPlayers():
     """
     return output
 
-def showALLChests():
+def showAllChests():
     output = """
     SELECT * FROM chest;
     """
