@@ -24,7 +24,7 @@ class Window(Frame):
         self.ok = Button(self, text="OK")
         self.quit_button = Button(self, text="Exit")
         self.show_cards = Button(self, text="SHOW CARDS")
-        self.all_cards = Text(self, height=30, width=30)
+        self.all_cards = Text(self, height=30, width=50)
 
         self.ok.place(x=450, y=2)
         self.quit_button.place(x=650, y=2)
@@ -44,4 +44,3 @@ class Window(Frame):
         self.e2 = Entry(self.master, width=7)
         self.e2.place(x=200, y=24)
         entry_text.focus()
-

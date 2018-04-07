@@ -1,5 +1,7 @@
 import pymysql
 import tkinter as tk
+import util
+from tabulate import tabulate
 
 
 class Model:
@@ -9,22 +11,17 @@ class Model:
         self.datab = ""
 
     def accessDB(self):
-        self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "lotrfinal")
-        cursor = self.datab.cursor()
-        cursor.execute("SELECT character_name from lotr_character")
+        self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
 
     def show_cards(self):
         cursor = self.datab.cursor()
-        cursor.execute("SELECT character_name from lotr_character")
-        loc = []
+        cursor.execute(util.showAllCards())
+        table = []
         all_char = ""
         for row in cursor:
-            loc.append(row[0])
+            table += [row]
 
-        for row in loc:
-            all_char += row
-            all_char += "\n"
-        return all_char
+        return tabulate(table)
 
 # if __name__ == "__main__":
 #     loc = []
