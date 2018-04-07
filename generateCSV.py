@@ -1,5 +1,49 @@
 import requests
 
+getURLPlayers = "http://www.clashapi.xyz/api/players"
+players = requests.get(url = getURLPlayers).json()
+playersOutput = "level,maxExp,hitpoints,damage\n"
+for player in players:
+    playersOutput += str(player['level'])
+    playersOutput += ","
+    playersOutput += str(player['maxExp'])
+    playersOutput += ","
+    playersOutput += str(player['kingsTower']['hitpoints'])
+    playersOutput += ","
+    playersOutput += str(player['kingsTower']['damage'])
+    playersOutput += "\n"
+
+#print(plasOutput)
+
+f = open("players.csv","w")
+f.write(playersOutput)
+f.close()
+
+'''
+getURLChests = "http://www.clashapi.xyz/api/chests"
+chests = requests.get(url = getURLChests).json()
+chestsOutput = "name,gold,arena,rare,epic,legendary\n"
+for chest in chests:
+    chestsOutput += chest['name']
+    chestsOutput += ","
+    chestsOutput += str(chest['gold']['max'])
+    chestsOutput += ","
+    chestsOutput += str(chest['arena'])
+    chestsOutput += ","
+    chestsOutput += str(chest['cards']['minRare'])
+    chestsOutput += ","
+    chestsOutput += str(chest['cards']['minEpic'])
+    chestsOutput += ","
+    chestsOutput += str(chest['cards']['minLegendary'])
+    chestsOutput += "\n"
+
+#print(chestsOutput)
+
+f = open("chests.csv","w")
+f.write(chestsOutput)
+f.close()
+
+
 getURLCards = "http://www.clashapi.xyz/api/cards"
 cards = requests.get(url = getURLCards).json()
 cardsOutput = "name, rarity, type, elixirCost, arena\n"
@@ -35,3 +79,4 @@ arenaOutput = arenaOutput[:len(arenaOutput) - 2]
 f = open("arenas.csv","w")
 f.write(arenaOutput)
 f.close()
+'''
