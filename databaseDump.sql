@@ -39,7 +39,7 @@ CREATE TABLE `arena` (
 
 LOCK TABLES `arena` WRITE;
 /*!40000 ALTER TABLE `arena` DISABLE KEYS */;
-INSERT INTO `arena` VALUES ('Training Camp',0,'0',0),('Goblin Stadium',5,'0',1),('Bone Pit',7,'400',2),('Barbarian Bowl',9,'800',3),('P.E.K.K.A.\'s Playhouse',11,'1100',4),('Spell Valley',12,'1400',5),('Builder\'s Workshop',14,'1700',6),('Royal Arena',15,'2000',7),('Frozen Peak',16,'2300',8),('Jungle Arena',18,'2600',9),('Hog Mountain',20,'3000',10),('Electro Valley',22,'3400',11);
+INSERT INTO `arena` VALUES ('Training Camp',0,'0',0),('Goblin Stadium',5,'0',1),('Bone Pit',7,'400',2),('Barbarian Bowl',9,'800',3),('P.E.K.K.A.\'s Playhouse',11,'1100',4),('Spell Valley',12,'1400',5),('Builder\'s Workshop',14,'1700',6),('Royal Arena',15,'2000',7),('Frozen Peak',16,'2300',8),('Jungle Arena',18,'2600',9),('Hog Mountain',20,'3000',10),('Electro Valley',22,'3400',11),('Legendary Arena',24,'3800',12);
 /*!40000 ALTER TABLE `arena` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,10 +55,10 @@ CREATE TABLE `card` (
   `rarity` varchar(45) NOT NULL,
   `type` varchar(45) NOT NULL,
   `elixirCost` int(11) NOT NULL,
-  `card_order` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
   PRIMARY KEY (`name`),
-  KEY `fk_cards_arena1_idx` (`card_order`),
-  CONSTRAINT `fk_cards` FOREIGN KEY (`card_order`) REFERENCES `arena` (`order`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_cards_arena1_idx` (`order`),
+  CONSTRAINT `fk_cards_arena1` FOREIGN KEY (`order`) REFERENCES `arena` (`order`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,7 +86,7 @@ CREATE TABLE `cardsindecks` (
   KEY `fk_cardsInDecks_cards1_idx` (`cardName`),
   KEY `fk_cardsInDecks_decks1_idx` (`deckName`),
   CONSTRAINT `fk_cardsInDecks_cards1` FOREIGN KEY (`cardName`) REFERENCES `card` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cardsInDecks_decks1` FOREIGN KEY (`deckName`) REFERENCES `deck` (`d_name`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_cardsInDecks_decks1` FOREIGN KEY (`deckName`) REFERENCES `deck` (`deckName`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -100,6 +100,37 @@ LOCK TABLES `cardsindecks` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `chest`
+--
+
+DROP TABLE IF EXISTS `chest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chest` (
+  `name` varchar(45) NOT NULL,
+  `gold` int(11) NOT NULL,
+  `arena` int(11) NOT NULL,
+  `rare` int(11) NOT NULL,
+  `epic` int(11) NOT NULL,
+  `legendary` int(11) NOT NULL,
+  `chestId` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`chestId`),
+  KEY `fk_chest_arena1_idx` (`arena`),
+  CONSTRAINT `fk_chest_arena1` FOREIGN KEY (`arena`) REFERENCES `arena` (`order`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chest`
+--
+
+LOCK TABLES `chest` WRITE;
+/*!40000 ALTER TABLE `chest` DISABLE KEYS */;
+INSERT INTO `chest` VALUES ('Wooden Chest',24,1,0,0,0,1),('Silver Chest',21,1,0,0,0,2),('Golden Chest',70,1,1,0,0,3),('Crown Chest',160,1,2,0,0,4),('Magical Chest',300,1,6,1,0,5),('Giant Chest',210,1,14,0,0,6),('Super Magical Chest',1620,1,36,6,0,7),('Epic Chest',0,1,0,6,0,8),('Legendary Chest',0,1,0,0,1,9),('Lightning Chest',410,1,13,1,0,10),('Fortune Chest',1100,1,32,5,0,11),('King\'s Chest',2900,1,48,16,0,12),('Wooden Chest',32,2,0,0,0,13),('Silver Chest',28,2,0,0,0,14),('Golden Chest',98,2,1,0,0,15),('Crown Chest',216,2,2,0,0,16),('Magical Chest',410,2,8,1,0,17),('Giant Chest',285,2,19,0,0,18),('Super Magical Chest',2187,2,48,8,0,19),('Epic Chest',0,2,0,8,0,20),('Legendary Chest',0,2,0,0,1,21),('Lightning Chest',430,2,14,1,0,22),('Fortune Chest',1200,2,34,5,0,23),('King\'s Chest',3200,2,50,16,0,24),('Wooden Chest',40,3,0,0,0,25),('Silver Chest',35,3,0,0,0,26),('Golden Chest',119,3,1,0,0,27),('Crown Chest',272,3,3,0,0,28),('Magical Chest',510,3,10,1,0,29),('Giant Chest',357,3,23,0,0,30),('Super Magical Chest',2754,3,61,10,0,31),('Epic Chest',0,3,0,10,0,32),('Legendary Chest',0,3,0,0,1,33),('Lightning Chest',450,3,13,1,0,34),('Fortune Chest',1200,3,35,5,0,35),('King\'s Chest',3100,3,52,16,0,36),('Wooden Chest',48,4,0,0,0,37),('Silver Chest',42,4,0,0,0,38),('Golden Chest',140,4,2,0,0,39),('Crown Chest',320,4,4,0,0,40),('Magical Chest',600,4,12,2,0,41),('Giant Chest',420,4,28,0,0,42),('Super Magical Chest',3240,4,72,12,0,43),('Epic Chest',0,4,0,12,0,44),('Legendary Chest',0,4,0,0,1,45),('Lightning Chest',470,4,15,1,0,46),('Fortune Chest',1300,4,37,6,0,47),('King\'s Chest',3200,4,54,18,0,48),('Wooden Chest',56,5,0,0,0,49),('Silver Chest',49,5,0,0,0,50),('Golden Chest',161,5,2,0,0,51),('Crown Chest',368,5,4,0,0,52),('Magical Chest',690,5,13,2,0,53),('Giant Chest',483,5,32,0,0,54),('Super Magical Chest',3726,5,82,13,0,55),('Epic Chest',0,5,0,13,0,56),('Legendary Chest',0,5,0,0,1,57),('Lightning Chest',490,5,16,1,0,58),('Fortune Chest',1400,5,38,6,0,59),('King\'s Chest',3400,5,56,18,0,60),('Wooden Chest',64,6,0,0,0,61),('Silver Chest',56,6,0,0,0,62),('Golden Chest',182,6,2,0,0,63),('Crown Chest',416,6,5,0,0,64),('Magical Chest',780,6,15,2,0,65),('Giant Chest',546,6,36,0,0,66),('Super Magical Chest',4212,6,93,15,0,67),('Epic Chest',0,6,0,15,0,68),('Legendary Chest',0,6,0,0,1,69),('Lightning Chest',510,6,16,2,0,70),('Fortune Chest',1400,6,40,6,0,71),('King\'s Chest',3500,6,58,19,0,72),('Wooden Chest',72,7,0,0,0,73),('Silver Chest',63,7,0,0,0,74),('Golden Chest',203,7,2,0,0,75),('Crown Chest',464,7,5,0,0,76),('Magical Chest',870,7,17,2,0,77),('Giant Chest',609,7,40,0,0,78),('Super Magical Chest',4698,7,104,17,0,79),('Epic Chest',0,7,0,17,0,80),('Legendary Chest',0,7,0,0,1,81),('Lightning Chest',530,7,17,2,0,82),('Fortune Chest',1500,7,42,7,0,83),('Legendary King\'s Chest',3600,7,60,20,1,84),('Wooden Chest',80,8,1,0,0,85),('Silver Chest',70,8,0,0,0,86),('Golden Chest',224,8,3,0,0,87),('Crown Chest',512,8,6,0,0,88),('Magical Chest',960,8,19,3,0,89),('Giant Chest',672,8,44,0,0,90),('Super Magical Chest',5184,8,115,19,0,91),('Epic Chest',0,8,0,19,0,92),('Legendary Chest',0,8,0,0,1,93),('Lightning Chest',550,8,18,2,0,94),('Fortune Chest',1500,8,43,7,0,95),('Legendary King\'s Chest',3700,8,62,20,1,96),('Wooden Chest',88,9,1,0,0,97),('Silver Chest',77,9,0,0,0,98),('Golden Chest',245,9,3,0,0,99),('Crown Chest',560,9,7,0,0,100),('Magical Chest',1050,9,21,3,0,101),('Giant Chest',735,9,49,0,0,102),('Super Magical Chest',5670,9,126,21,0,103),('Epic Chest',0,9,0,20,0,104),('Legendary Chest',0,9,0,0,1,105),('Lightning Chest',570,9,18,2,0,106),('Fortune Chest',1600,9,45,7,0,107),('Legendary King\'s Chest',3800,9,64,21,1,108),('Wooden Chest',96,10,1,0,0,109),('Silver Chest',84,10,1,0,0,110),('Golden Chest',266,10,3,0,0,111),('Crown Chest',608,10,7,0,0,112),('Magical Chest',1140,10,22,3,0,113),('Giant Chest',798,10,53,0,0,114),('Super Magical Chest',6156,10,136,22,0,115),('Epic Chest',0,10,0,20,0,116),('Legendary Chest',0,10,0,0,1,117),('Lightning Chest',590,10,19,2,0,118),('Fortune Chest',1600,10,46,7,0,119),('Legendary King\'s Chest',4000,10,66,22,1,120),('Wooden Chest',104,11,1,0,0,121),('Silver Chest',91,11,1,0,0,122),('Golden Chest',287,11,4,0,0,123),('Crown Chest',656,11,8,0,0,124),('Magical Chest',1230,11,24,4,0,125),('Giant Chest',861,11,57,0,0,126),('Super Magical Chest',6642,11,147,24,0,127),('Epic Chest',0,11,0,20,0,128),('Legendary Chest',0,11,0,0,1,129),('Lightning Chest',610,11,20,2,0,130),('Fortune Chest',1700,11,48,8,0,131),('Legendary King\'s Chest',4100,11,68,22,1,132),('Wooden Chest',112,12,1,0,0,133),('Silver Chest',98,12,1,0,0,134),('Golden Chest',308,12,4,0,0,135),('Crown Chest',704,12,8,0,0,136),('Magical Chest',1320,12,26,4,0,137),('Giant Chest',924,12,61,0,0,138),('Super Magical Chest',7128,12,158,26,0,139),('Epic Chest',0,12,0,20,0,140),('Legendary Chest',0,12,0,0,1,141),('Season Reward Chest',2121,12,50,10,0,142),('Season Reward Chest',3171,12,75,15,0,143),('Season Reward Chest',4221,12,100,20,0,144),('Season Reward Chest',5271,12,125,25,0,145),('Season Reward Chest',6321,12,150,30,0,146),('Season Reward Chest',7371,12,175,35,0,147),('Season Reward Chest',8421,12,200,40,0,148),('Season Reward Chest',9471,12,225,45,0,149),('Season Reward Chest',10521,12,250,50,0,150),('Lightning Chest',630,12,20,2,0,151),('Fortune Chest',1800,12,50,8,0,152),('Legendary King\'s Chest',4200,12,70,23,1,153);
+/*!40000 ALTER TABLE `chest` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `deck`
 --
 
@@ -107,8 +138,8 @@ DROP TABLE IF EXISTS `deck`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `deck` (
-  `d_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`d_name`)
+  `deckName` varchar(45) NOT NULL,
+  PRIMARY KEY (`deckName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,6 +150,32 @@ CREATE TABLE `deck` (
 LOCK TABLES `deck` WRITE;
 /*!40000 ALTER TABLE `deck` DISABLE KEYS */;
 /*!40000 ALTER TABLE `deck` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `player`
+--
+
+DROP TABLE IF EXISTS `player`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player` (
+  `level` int(11) NOT NULL,
+  `maxExp` int(11) NOT NULL,
+  `hitpoints` int(11) NOT NULL,
+  `damage` int(11) NOT NULL,
+  PRIMARY KEY (`level`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player`
+--
+
+LOCK TABLES `player` WRITE;
+/*!40000 ALTER TABLE `player` DISABLE KEYS */;
+INSERT INTO `player` VALUES (1,20,2400,50),(2,50,2568,53),(3,100,2736,57),(4,200,2904,60),(5,400,3096,64),(6,1000,3312,69),(7,2000,3528,73),(8,5000,3768,78),(9,10000,4008,83),(10,30000,4392,91),(11,40000,4824,100),(12,80000,5304,110),(13,0,5832,121);
+/*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-17 12:53:53
+-- Dump completed on 2018-04-07 16:03:36
