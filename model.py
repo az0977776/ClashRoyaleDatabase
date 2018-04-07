@@ -17,7 +17,6 @@ class Model:
         cursor = self.datab.cursor()
         cursor.execute(util.showAllCards())
         table = []
-        all_char = ""
         for row in cursor:
             table += [row]
 
