@@ -18,7 +18,7 @@ class Window(Frame):
         self.ok = Button(self, text="OK")
         self.quit_button = Button(self, text="Exit")
         self.show_cards = Button(self, text="CARDS")
-        self.text = Text(self, height=30, width=50)
+        self.text = Text(self, height=30, width=100)
         self.show_arenas = Button(self, text="ARENAS")
         self.show_chests = Button(self, text="CHESTS")
         self.show_player = Button(self, text="PLAYER")
