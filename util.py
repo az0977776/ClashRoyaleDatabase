@@ -1,52 +1,58 @@
-from sqlalchemy import create_engine
-import sys
-from tabulate import tabulate
 
+def showAllCards():
+    output = """
+    SELECT * FROM card;
+    """
+    return output
 
-def getCardsFromDeck(deckID):
-    
+def getCardsFromDeck(deckName):
+    output = """
+    SELECT c.name, c.rarity, c.type, c.elixirCost, c.order FROM
+    (SELECT * FROM cardsindecks LEFT JOIN card on cardsindecks.cardName = card.name) as c
+    WHERE deckName = '{}';
+    """.format(deckName)
+    return output
 
+def addCardtoDeck(deckName,cardName):
+    output = """
+    INSERT INTO cardsindecks (deckName,cardName)
+    VALUES ('{}','{}');
+    """.format(deckName,cardName)
+    return output
 
-def addCardtoDeck(deckID,cardID):
+def removeCardfromDeck(deckName,cardName):
+    output = """
+    DELETE FROM cardsindecks
+    WHERE deckName = '{}' and cardName = '{}';
+    """.format(deckName,cardName)
+    return output
 
+def addDeck(deckName):
+    output = """
+    INSERT INTO deck (deckName)
+    VALUES ('{}');
+    """.format(deckName)
+    return output
 
-def removeCardfromDeck(deckID,cardID):
+def removeDeck(deckName):
+    output = """
+    DELETE FROM deck
+    WHERE deckName = '{}';
+    """.format(deckName)
+    return output
 
-
-
-def addDeck(deckID):
-
-
-def removeDeck(deckID):
-
-
+def clearDeck(deckName):
+    output = """
+    DELETE FROM cardsindecks
+    WHERE deckName = '{}';
+    """.format(deckName)
+    return output
 
 if __name__ == '__main__':
-    while(1):
-        try:
-            # prompts username and password
-            #username = input('Enter your username: ')
-            #password = getpass('Password for ' + username + ': ')
-            username = 'root'
-            password = 'root'
-
-            # Connection settings
-            settings = {
-                'userName': username,           # The name of the MySQL account to use (or empty for anonymous)
-                'password': password,           # The password for the MySQL account (or empty for anonymous)
-                'serverName': "localhost",    # The name of the computer running MySQL
-                'portNumber': 3306,           # The port of the MySQL server (default is 3306)
-                'dbName': "lotrfinalwanga",             # The name of the database we are testing with (this default is installed with MySQL)
-            }
-
-            # Connect to the database
-            conn = create_engine('mysql://{0[userName]}:{0[password]}@{0[serverName]}:{0[portNumber]}/{0[dbName]}'.format(settings))
-
-            # if this does not work then the connection failed
-            conn.execute("show tables")
-            break;
-        except:
-            # exit on failure to connect
-            print('Invalid credentials\n')
-
-    print('Connected to database\n')
+    print(addDeck('deck1'))
+    print(removeDeck('deck1'))
+    print(addCardtoDeck('deck1','archers'))
+    print(removeCardfromDeck('deck1','archers'))
+    print(showAllCards())
+    print(getCardsFromDeck('deck1'))
+    print(clearDeck('deck1'))
