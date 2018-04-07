@@ -1,5 +1,5 @@
 from tkinter import *
-import model
+
 
 class Window(Frame):
 
@@ -23,12 +23,10 @@ class Window(Frame):
 
         self.ok = Button(self, text="OK")
         self.quit_button = Button(self, text="Exit")
-        self.show_cards = Button(self, text="SHOW CARDS")
-        self.all_cards = Text(self, height=30, width=30)
+        self.all_cards = Text(self, height=20, width=20)
 
         self.ok.place(x=450, y=2)
         self.quit_button.place(x=650, y=2)
-        self.show_cards.place(x=20, y=50)
         self.all_cards.place(x=20, y=70)
 
     def get_username(self):
