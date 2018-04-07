@@ -19,7 +19,7 @@ f = open("players.csv","w")
 f.write(playersOutput)
 f.close()
 
-'''
+
 getURLChests = "http://www.clashapi.xyz/api/chests"
 chests = requests.get(url = getURLChests).json()
 chestsOutput = "name,gold,arena,rare,epic,legendary\n"
@@ -79,4 +79,3 @@ arenaOutput = arenaOutput[:len(arenaOutput) - 2]
 f = open("arenas.csv","w")
 f.write(arenaOutput)
 f.close()
-'''

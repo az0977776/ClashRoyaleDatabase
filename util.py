@@ -1,3 +1,14 @@
+def showAllPlayers():
+    output = """
+    SELECT * FROM player;
+    """
+    return output
+
+def showALLChests():
+    output = """
+    SELECT * FROM chest;
+    """
+    return output;
 
 def showAllCards():
     output = """
