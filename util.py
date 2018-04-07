@@ -1,43 +1,52 @@
-import pymysql.cursors
-
-connection = pymysql.connect(host = "localhost",
-                            user = "user",
-                            password = "password",
-                            db="",
-                            charset="utf8mb4",
-                            cursorclass=pymysql.cursors.DictCursor)
+from sqlalchemy import create_engine
+import sys
+from tabulate import tabulate
 
 
-def getCardsFromDeck(deck):
-    query = """
-            SELECT ... FROM deck
-            LEFT JOIN (
-            SELECT * FROM cardsInDeck
-            LEFT JOIN
-            card ON cardsInDeck.cardName = card.name
-            ) AS c
-            ON deck.name = c.deckName
-            WHERE deckName = %s
-            """
-    cursor.execute(query,(deck))
+def getCardsFromDeck(deckID):
+    
 
 
-def addCardtoDeck(deck,card):
-
-def removeCardfromDeck(deck,card):
-    query = """
-
-            """
+def addCardtoDeck(deckID,cardID):
 
 
-def addDeck(deck):
-    query = """
-            INSERT into deck VALUES (%s)
-            """
-    cursor.execute(query,(deck))
+def removeCardfromDeck(deckID,cardID):
 
-def removeDeck(deck):
-    query = """
-            DELETE * FROM deck WHERE name = %s
-            """
-    cursor.execute(query, (deck))
+
+
+def addDeck(deckID):
+
+
+def removeDeck(deckID):
+
+
+
+if __name__ == '__main__':
+    while(1):
+        try:
+            # prompts username and password
+            #username = input('Enter your username: ')
+            #password = getpass('Password for ' + username + ': ')
+            username = 'root'
+            password = 'root'
+
+            # Connection settings
+            settings = {
+                'userName': username,           # The name of the MySQL account to use (or empty for anonymous)
+                'password': password,           # The password for the MySQL account (or empty for anonymous)
+                'serverName': "localhost",    # The name of the computer running MySQL
+                'portNumber': 3306,           # The port of the MySQL server (default is 3306)
+                'dbName': "lotrfinalwanga",             # The name of the database we are testing with (this default is installed with MySQL)
+            }
+
+            # Connect to the database
+            conn = create_engine('mysql://{0[userName]}:{0[password]}@{0[serverName]}:{0[portNumber]}/{0[dbName]}'.format(settings))
+
+            # if this does not work then the connection failed
+            conn.execute("show tables")
+            break;
+        except:
+            # exit on failure to connect
+            print('Invalid credentials\n')
+
+    print('Connected to database\n')
