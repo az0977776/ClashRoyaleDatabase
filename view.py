@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 class Window(Frame):
@@ -15,16 +16,16 @@ class Window(Frame):
         self.master.title("CLASH ROYALE")
         self.pack(fill=BOTH, expand=1)
 
-        self.ok = Button(self, text="OK")
+        self.ok = Button(self, text="LOGIN")
         self.quit_button = Button(self, text="Exit")
         self.show_cards = Button(self, text="CARDS")
-        self.text = Text(self, height=30, width=50)
+        self.text = Text(self, height=30, width=50, state=DISABLED)
         self.show_arenas = Button(self, text="ARENAS")
         self.show_chests = Button(self, text="CHESTS")
         self.show_player = Button(self, text="PLAYER")
 
         self.show_cards.place(x=30,y=50)
-        self.ok.place(x=450, y=2)
+        self.ok.place(x=300, y=2)
         self.quit_button.place(x=650, y=2)
         self.text.place(x=20, y=80)
         self.show_arenas.place(x=100, y=50)
@@ -42,6 +43,6 @@ class Window(Frame):
     def get_password(self):
         entry_text = Label(self.master, text="PASSWORD: ")
         entry_text.place(x=30, y=21)
-        self.e2 = Entry(self.master, width=7)
+        self.e2 = Entry(self.master, width=7, show="*")
         self.e2.place(x=200, y=24)
         entry_text.focus()

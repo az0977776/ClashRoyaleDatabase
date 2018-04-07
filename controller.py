@@ -22,16 +22,16 @@ class Controller:
         self.view.show_chests.config(command=self.displayChests)
         self.view.show_player.config(command=self.displayPlayer)
 
-        # self.view.ok.config(visible="no")
-
 
     def client_exit(self):
         exit()
 
     def display(self, comm):
         self.text_to_display = self.model.get_table(comm)
+        self.view.text.config(state=NORMAL)
         self.view.text.delete('1.0', END)
         self.view.text.insert(END, self.text_to_display)
+        self.view.text.config(state=DISABLED)
 
     def displayCards(self):
         self.display(util.showAllCards())
