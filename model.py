@@ -1,6 +1,7 @@
 import pymysql
 import tkinter as tk
 import util
+from tabulate import tabulate
 
 
 class Model:
@@ -15,17 +16,12 @@ class Model:
     def show_cards(self):
         cursor = self.datab.cursor()
         cursor.execute(util.showAllCards())
-        loc = []
+        table = []
         all_char = ""
         for row in cursor:
-            loc.append(row[0])
-            loc.append(row[1])
-            loc.append(row[3])
+            table += [row]
 
-        for row in loc:
-            all_char += str(row)
-            all_char += "\n"
-        return all_char
+        return tabulate(table)
 
 # if __name__ == "__main__":
 #     loc = []

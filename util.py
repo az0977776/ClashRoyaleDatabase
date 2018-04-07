@@ -5,6 +5,12 @@ def showAllCards():
     """
     return output
 
+def showAllArenas():
+    output = """
+    SELECT * FROM arena;
+    """
+    return output
+
 def getCardsFromDeck(deckName):
     output = """
     SELECT c.name, c.rarity, c.type, c.elixirCost, c.order FROM
