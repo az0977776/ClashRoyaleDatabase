@@ -111,7 +111,8 @@ CREATE TABLE `chest` (
   `rare` int(11) NOT NULL,
   `epic` int(11) NOT NULL,
   `legendary` int(11) NOT NULL,
-  PRIMARY KEY (`name`),
+  `chestId` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`chestId`),
   KEY `fk_chest_arena1_idx` (`arena`),
   CONSTRAINT `fk_chest_arena1` FOREIGN KEY (`arena`) REFERENCES `arena` (`order`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -182,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-07 15:47:07
+-- Dump completed on 2018-04-07 15:57:26
