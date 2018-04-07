@@ -23,15 +23,17 @@ class Window(Frame):
 
         self.ok = Button(self, text="OK")
         self.quit_button = Button(self, text="Exit")
-
-
         self.show_cards = Button(self, text="SHOW CARDS")
-        self.all_cards = Text(self, height=30, width=50)
+        self.text = Text(self, height=30, width=50)
+        self.show_arenas = Button(self, text="SHOW ARENAS")
+        self.show_chests = Button(self, text="SHOW CHESTS")
 
-
+        self.show_cards.place(x=30,y=50)
         self.ok.place(x=450, y=2)
         self.quit_button.place(x=650, y=2)
-        self.all_cards.place(x=20, y=70)
+        self.text.place(x=20, y=80)
+        self.show_arenas.place(x=40, y=50)
+        #self.show_chests(x=50, y=50)
 
     def get_username(self):
         entry_text = Label(self.master, text="USERNAME: ")
