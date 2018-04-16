@@ -17,7 +17,6 @@ class Window(Frame):
         self.pack(fill=BOTH, expand=1)
 
         self.ok = Button(self, text="LOGIN")
-        self.quit_button = Button(self, text="Exit")
         self.show_cards = Button(self, text="CARDS")
         self.text = Text(self, height=30, width=100, state=DISABLED)
         self.show_arenas = Button(self, text="ARENAS")
@@ -28,7 +27,6 @@ class Window(Frame):
         # read only display
         self.show_cards.place(x=30,y=50)
         self.ok.place(x=300, y=2)
-        self.quit_button.place(x=650, y=2)
         self.text.place(x=20, y=80)
         self.show_arenas.place(x=100, y=50)
         self.show_chests.place(x=180, y=50)

@@ -33,16 +33,19 @@ class Model:
     def removeDeck(self):
         print(self.rem_add_deck)
         self.cursor.execute(util.removeDeck(self.rem_add_deck.get()))
+        self.datab.commit()
 
     def addDeck(self):
         self.cursor.execute(util.addDeck(self.rem_add_deck.get()))
+        self.datab.commit()
 
     def addCard(self):
-        print(self.change_deck.get(), self.change_card.get())
         self.cursor.execute(util.addCardtoDeck(self.change_deck.get(), self.change_card.get()))
+        self.datab.commit()
 
     def removeCard(self):
-        self.cursor.execute(util.removeCardfromDeck(self.change_deck.get(), self.change_card.get()));
+        self.cursor.execute(util.removeCardfromDeck(self.change_deck.get(), self.change_card.get()))
+        self.datab.commit()
 
     def getCurDeck(self):
         self.cursor.execute(util.getCardsFromDeck(self.cur_deck.get()))

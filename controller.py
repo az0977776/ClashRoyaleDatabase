@@ -14,7 +14,6 @@ class Controller:
         self.view.e1.config(textvariable=self.model.username)
         self.view.e2.config(textvariable=self.model.password)
         self.view.ok.config(command=self.get_user_password)
-        self.view.quit_button.config(command=self.client_exit)
         self.view.add_rem_deck.config(textvariable=self.model.rem_add_deck)
         self.view.deck_add.config(command=self.addDeck)
         self.view.deck_remove.config(command=self.removeDeck)
@@ -46,10 +45,6 @@ class Controller:
 
     def addDeck(self):
         self.model.addDeck()
-
-
-    def client_exit(self):
-        exit()
 
     def display(self, comm):
         self.text_to_display = self.model.get_table(comm)
