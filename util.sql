@@ -32,6 +32,14 @@ SELECT * FROM arena;
 END $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS show_all_decks;
+DELIMITER $$
+CREATE PROCEDURE show_all_decks ()
+BEGIN
+SELECT * FROM deck;
+END $$
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS get_cards_from_deck;
 DELIMITER $$
 CREATE PROCEDURE get_cards_from_deck 
