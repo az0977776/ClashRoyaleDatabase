@@ -19,7 +19,6 @@ class Window(Frame):
         self.ok = Button(self, text="LOGIN")
         self.quit_button = Button(self, text="Exit")
         self.show_cards = Button(self, text="CARDS")
-
         self.text = Text(self, height=30, width=100, state=DISABLED)
         self.show_arenas = Button(self, text="ARENAS")
         self.show_chests = Button(self, text="CHESTS")
@@ -32,6 +31,19 @@ class Window(Frame):
         self.show_arenas.place(x=100, y=50)
         self.show_chests.place(x=180, y=50)
         self.show_player.place(x=260, y=50)
+
+        # adding/removing decks
+        self.deck_add = Button(self, text="Add Deck")
+        self.deck_remove = Button(self, text="Delete Deck")
+        self.deck_add.place(x=400, y=50)
+        self.deck_remove.place(x=470, y=50)
+        self.decks = Text(self, height=30, width=30)
+        self.decks.place(x=300,y=80)
+
+        # cards in a deck
+        self.card_add = Button(self,text="Add Card")
+        self.card_delete = Button(self,text="Delete Card")
+        self.cards = Text(self, height=30, width=30)
 
 
     def get_username(self):
