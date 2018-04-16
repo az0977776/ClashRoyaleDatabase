@@ -23,7 +23,9 @@ class Window(Frame):
         self.show_arenas = Button(self, text="ARENAS")
         self.show_chests = Button(self, text="CHESTS")
         self.show_player = Button(self, text="PLAYER")
+        self.show_deck = Button(self, text="DECKS")
 
+        # read only display
         self.show_cards.place(x=30,y=50)
         self.ok.place(x=300, y=2)
         self.quit_button.place(x=650, y=2)
@@ -31,19 +33,34 @@ class Window(Frame):
         self.show_arenas.place(x=100, y=50)
         self.show_chests.place(x=180, y=50)
         self.show_player.place(x=260, y=50)
+        self.show_deck.place(x=340, y=50)
 
         # adding/removing decks
-        self.deck_add = Button(self, text="Add Deck")
-        self.deck_remove = Button(self, text="Delete Deck")
-        self.deck_add.place(x=400, y=50)
-        self.deck_remove.place(x=470, y=50)
-        self.decks = Text(self, height=30, width=30)
-        self.decks.place(x=300,y=80)
+        self.deck_add = Button(self, text="ADD DECK")
+        self.deck_remove = Button(self, text="DELETE DECK")
+        self.deck_add.place(x=600, y=50)
+        self.deck_remove.place(x=700, y=50)
+        self.add_rem_deck = Entry(self.master, width=10)
+        self.add_rem_deck.place(x=650, y=80)
 
-        # cards in a deck
-        self.card_add = Button(self,text="Add Card")
-        self.card_delete = Button(self,text="Delete Card")
-        self.cards = Text(self, height=30, width=30)
+        # add/remove card
+        self.card_add = Button(self, text="ADD CARD")
+        self.card_rem = Button(self, text="REMOVE CARD")
+        self.card_add.place(x=600, y=110)
+        self.card_rem.place(x=750, y=110)
+        self.change_deck = Entry(self.master, width=10)
+        self.change_deck.place(x=600, y=140)
+        self.change_card = Entry(self.master, width=10)
+        self.change_card.place(x=750, y=140)
+
+        # show deck
+        self.show_current_deck = Button(self, text="SHOW CARDS")
+        self.show_current_deck.place(x=600, y=200)
+        self.cur_deck = Entry(self.master, width=10)
+        self.cur_deck.place(x=600, y=230)
+        self.cards_in_deck = Text(self, height=30, width=40, state=DISABLED)
+        self.cards_in_deck.place(x=600, y=250)
+
 
 
     def get_username(self):
