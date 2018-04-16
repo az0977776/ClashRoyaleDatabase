@@ -101,3 +101,24 @@ BEGIN
 END $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS update_deck_name;
+DELIMITER $$
+CREATE PROCEDURE update_deck_name
+(old_name VARCHAR(30), new_name VARCHAR(30))
+BEGIN
+	UPDATE deck
+    SET deckName = new_name
+    WHERE deckName = old_name;
+END $$
+DELIMITER ;
+
+call show_all_decks();
+call add_deck('deckA');
+call add_deck('deckB');
+call show_all_cards();
+call add_card_to_deck('deckA','bandit');
+call add_card_to_deck('deckA','giant');
+call get_cards_from_deck('deckA');
+call update_deck_name('deckA','deckC');
+call add_card_to_deck('deckC','arrows');
+call update_deck_name('deckC','deckA');

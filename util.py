@@ -58,6 +58,12 @@ def clearDeck(deckName):
     """.format(deckName)
     return output
 
+def updateDeckName(oldName, newName):
+    output = """
+    CALL update_deck_name('{}','{}');
+    """.format(oldName,newName)
+    return output
+
 if __name__ == '__main__':
     print(addDeck('deck1'))
     print(removeDeck('deck1'))
