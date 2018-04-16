@@ -22,6 +22,12 @@ def showAllArenas():
     """
     return output
 
+def showAllDecks():
+    output = """
+    CALL show_all_decks();
+    """
+    return output
+
 def getCardsFromDeck(deckName):
     output = """
     CALL get_cards_from_deck('{}');
