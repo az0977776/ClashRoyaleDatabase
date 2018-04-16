@@ -34,7 +34,6 @@ class Controller:
 
     def displayDeck(self):
         self.current_deck = self.model.getCurDeck()
-        print(self.current_deck)
         self.view.cards_in_deck.config(state=NORMAL)
         self.view.cards_in_deck.delete('1.0', END)
         self.view.cards_in_deck.insert(END, self.current_deck)

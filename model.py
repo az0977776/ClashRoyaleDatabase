@@ -49,9 +49,10 @@ class Model:
 
     def getCurDeck(self):
         self.cursor.execute(util.getCardsFromDeck(self.cur_deck.get()))
-        out = ""
+        num_fields = len(self.cursor.description)
+        field_names = [i[0] for i in self.cursor.description]
+        table = []
         for row in self.cursor:
-            out += row[0]
-            out += "\n"
-        return out
+            table += [row]
 
+        return tabulate(table,headers=field_names)
