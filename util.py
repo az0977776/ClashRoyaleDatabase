@@ -1,67 +1,60 @@
 def showAllPlayers():
     output = """
-    SELECT * FROM player;
+    CALL show_all_players();
     """
     return output
 
 def showAllChests():
     output = """
-    SELECT * FROM chest;
+    CALL show_all_chests();
     """
     return output;
 
 def showAllCards():
     output = """
-    SELECT * FROM card;
+    CALL show_all_cards();
     """
     return output
 
 def showAllArenas():
     output = """
-    SELECT * FROM arena;
+    CALL show_all_arenas();
     """
     return output
 
 def getCardsFromDeck(deckName):
     output = """
-    SELECT c.name, c.rarity, c.type, c.elixirCost, c.order FROM
-    (SELECT * FROM cardsindecks LEFT JOIN card on cardsindecks.cardName = card.name) as c
-    WHERE deckName = '{}';
+    CALL get_cards_from_deck('{}');
     """.format(deckName)
     return output
 
 def addCardtoDeck(deckName,cardName):
     output = """
-    INSERT INTO cardsindecks (deckName,cardName)
-    VALUES ('{}','{}');
+    CALL add_card_to_deck('{}','{}');
     """.format(deckName,cardName)
     return output
 
 def removeCardfromDeck(deckName,cardName):
     output = """
-    DELETE FROM cardsindecks
-    WHERE deckName = '{}' and cardName = '{}';
+    CALL remove_card_from_deck('{}','{}');
     """.format(deckName,cardName)
     return output
 
 def addDeck(deckName):
     output = """
-    INSERT INTO deck (deckName)
-    VALUES ('{}');
+    CALL add_deck('{}');
     """.format(deckName)
     return output
 
 def removeDeck(deckName):
     output = """
-    DELETE FROM deck
-    WHERE deckName = '{}';
+    CALL remove_deck('{}');
     """.format(deckName)
     return output
 
 def clearDeck(deckName):
     output = """
-    DELETE FROM cardsindecks
-    WHERE deckName = '{}';
+    CALL clear_deck('{}');
     """.format(deckName)
     return output
 
