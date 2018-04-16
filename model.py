@@ -17,42 +17,80 @@ class Model:
         self.cur_deck = tk.StringVar()
 
     def accessDB(self):
-        self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
-        self.cursor = self.datab.cursor()
+        try:
+            self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
+            self.cursor = self.datab.cursor()
+        except:
+            print("unable to login")
 
     def get_table(self, comm):
-        self.cursor.execute(comm)
-        num_fields = len(self.cursor.description)
-        field_names = [i[0] for i in self.cursor.description]
-        table = []
-        for row in self.cursor:
-            table += [row]
+        try:
+            self.cursor.execute(comm)
+            num_fields = len(self.cursor.description)
+            field_names = [i[0] for i in self.cursor.description]
+            table = []
+            for row in self.cursor:
+                table += [row]
 
-        return tabulate(table,headers=field_names)
+            return tabulate(table,headers=field_names)
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to get table")
 
     def removeDeck(self):
-        print(self.rem_add_deck)
-        self.cursor.execute(util.removeDeck(self.rem_add_deck.get()))
-        self.datab.commit()
+        try:
+            self.cursor.execute(util.removeDeck(self.rem_add_deck.get()))
+            self.datab.commit()
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to remove deck")
 
     def addDeck(self):
-        self.cursor.execute(util.addDeck(self.rem_add_deck.get()))
-        self.datab.commit()
+        try:
+            self.cursor.execute(util.addDeck(self.rem_add_deck.get()))
+            self.datab.commit()
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to add deck")
 
     def addCard(self):
-        self.cursor.execute(util.addCardtoDeck(self.change_deck.get(), self.change_card.get()))
-        self.datab.commit()
+        try:
+            self.cursor.execute(util.addCardtoDeck(self.change_deck.get(), self.change_card.get()))
+            self.datab.commit()
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to add card")
 
     def removeCard(self):
-        self.cursor.execute(util.removeCardfromDeck(self.change_deck.get(), self.change_card.get()))
-        self.datab.commit()
+        try:
+            self.cursor.execute(util.removeCardfromDeck(self.change_deck.get(), self.change_card.get()))
+            self.datab.commit()
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to add deck")
 
     def getCurDeck(self):
-        self.cursor.execute(util.getCardsFromDeck(self.cur_deck.get()))
-        num_fields = len(self.cursor.description)
-        field_names = [i[0] for i in self.cursor.description]
-        table = []
-        for row in self.cursor:
-            table += [row]
+        try:
+            self.cursor.execute(util.getCardsFromDeck(self.cur_deck.get()))
+            num_fields = len(self.cursor.description)
+            field_names = [i[0] for i in self.cursor.description]
+            table = []
+            for row in self.cursor:
+                table += [row]
 
-        return tabulate(table,headers=field_names)
+            return tabulate(table,headers=field_names)
+        except pymysql.err.IntegrityError as error:
+            code, message = error.args
+            print(code, message)
+        except:
+            print("unable to get cards from deck")
