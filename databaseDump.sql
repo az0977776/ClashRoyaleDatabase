@@ -85,8 +85,8 @@ CREATE TABLE `cardsindecks` (
   PRIMARY KEY (`deckName`,`cardName`),
   KEY `fk_cardsInDecks_cards1_idx` (`cardName`),
   KEY `fk_cardsInDecks_decks1_idx` (`deckName`),
-  CONSTRAINT `fk_cardsInDecks_cards1` FOREIGN KEY (`cardName`) REFERENCES `card` (`name`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_cardsInDecks_decks1` FOREIGN KEY (`deckName`) REFERENCES `deck` (`deckName`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `fk_cardsInDecks_cards1` FOREIGN KEY (`cardName`) REFERENCES `card` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_cardsInDecks_decks1` FOREIGN KEY (`deckName`) REFERENCES `deck` (`deckName`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,7 +96,7 @@ CREATE TABLE `cardsindecks` (
 
 LOCK TABLES `cardsindecks` WRITE;
 /*!40000 ALTER TABLE `cardsindecks` DISABLE KEYS */;
-INSERT INTO `cardsindecks` VALUES ('deckA','arrows'),('deckA','bandit'),('deckA','giant');
+INSERT INTO `cardsindecks` VALUES ('newDeck','Archers'),('sampledeck','archers'),('deckA','arrows'),('newDeck','Arrows'),('newDeck','Baby Dragon'),('deckA','bandit'),('newDeck','Bandit'),('deckB','Barbarian Hut'),('deckA','Bats'),('deckB','bomb tower'),('newDeck','Bomber'),('deckB','Cannon Cart'),('deckA','Clone'),('deckB','Dark Prince'),('deckB','Executioner'),('newDeck','Fireball'),('deckA','Freeze'),('deckA','giant');
 /*!40000 ALTER TABLE `cardsindecks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,7 @@ CREATE TABLE `deck` (
 
 LOCK TABLES `deck` WRITE;
 /*!40000 ALTER TABLE `deck` DISABLE KEYS */;
-INSERT INTO `deck` VALUES ('asd'),('deckA'),('deckB');
+INSERT INTO `deck` VALUES ('deckA'),('deckB'),('newDeck'),('sampledeck');
 /*!40000 ALTER TABLE `deck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -434,4 +434,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-16 15:28:20
+-- Dump completed on 2018-04-19 13:39:49

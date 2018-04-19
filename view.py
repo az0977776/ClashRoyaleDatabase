@@ -56,7 +56,7 @@ class Window(Frame):
         self.show_current_deck.place(x=600, y=200)
         self.cur_deck = Entry(self.master, width=10)
         self.cur_deck.place(x=600, y=230)
-        self.cards_in_deck = Text(self, height=30, width=40, state=DISABLED)
+        self.cards_in_deck = Text(self, height=30, width=60, state=DISABLED)
         self.cards_in_deck.place(x=600, y=250)
 
 

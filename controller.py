@@ -106,6 +106,11 @@ class Controller:
         except:
             raise Exception("unable to remove card")
 
+    def updateDeckName(self):
+        try:
+            self.model.updateDeckName()
+        except:
+            raise Exception("could not update deck name")
 
 if __name__ == "__main__":
     root = Tk()

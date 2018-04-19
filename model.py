@@ -56,3 +56,8 @@ class Model:
         for row in self.cursor:
             table += [row]
         return tabulate(table,headers=field_names)
+
+    def updateDeckName(self, oldName, newName):
+        self.cursor.execute(util.updateDeckName())
+        self.datab.commit()
+        
