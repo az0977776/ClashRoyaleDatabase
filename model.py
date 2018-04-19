@@ -15,6 +15,8 @@ class Model:
         self.change_deck = tk.StringVar()
         self.change_card = tk.StringVar()
         self.cur_deck = tk.StringVar()
+        self.oldDeckName = tk.StringVar()
+        self.newDeckName = tk.StringVar()
 
     def accessDB(self):
         self.datab = pymysql.connect("localhost", str(self.username.get()), str(self.password.get()), "clash_royale")
@@ -57,7 +59,6 @@ class Model:
             table += [row]
         return tabulate(table,headers=field_names)
 
-    def updateDeckName(self, oldName, newName):
-        self.cursor.execute(util.updateDeckName())
+    def updateDeckName(self):
+        self.cursor.execute(util.updateDeckName(self.oldDeckName.get(),self.newDeckName.get()))
         self.datab.commit()
-        
