@@ -63,9 +63,20 @@ class Window(Frame):
         self.show_current_deck.place(x=600, y=200)
         self.cur_deck = Entry(self.master, width=10)
         self.cur_deck.place(x=600, y=230)
-        self.cards_in_deck = Text(self, height=30, width=40, state=DISABLED)
+        self.cards_in_deck = Text(self, height=30, width=60, state=DISABLED)
         self.cards_in_deck.place(x=600, y=250)
 
+        # update deck name
+        self.updateDeckNameButton = Button(self,text ="UPDATE DECK NAME")
+        self.updateDeckNameButton.place(x=800,y=10)
+        self.oldDeckName = Entry(self.master, width=10)
+        self.newDeckName = Entry(self.master, width=10)
+        self.oldDeckName.place(x=700,y=10)
+        self.newDeckName.place(x=750,y=10)
+
+        # notif arenas
+        self.show_notif = Text(self, height = 30, width = 60, state=DISABLED)
+        self.show_notif.place(x=800,y=50)
 
 
     def get_username(self):

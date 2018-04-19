@@ -112,13 +112,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-call show_all_decks();
-call add_deck('deckA');
-call add_deck('deckB');
-call show_all_cards();
-call add_card_to_deck('deckA','bandit');
-call add_card_to_deck('deckA','giant');
-call get_cards_from_deck('deckA');
-call update_deck_name('deckA','deckC');
-call add_card_to_deck('deckC','arrows');
-call update_deck_name('deckC','deckA');
+call update_deck_name('asd','asdf');
+select * from deck;
+select * from cardsindecks;
