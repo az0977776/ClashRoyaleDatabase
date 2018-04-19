@@ -33,7 +33,7 @@ class Controller:
         try:
             self.model.accessDB()
         except:
-            raise Exception("unable to login")
+            self.show_notif("unable to login")
 
     def displayDeck(self):
         try:
@@ -43,19 +43,19 @@ class Controller:
             self.view.cards_in_deck.insert(END, self.current_deck)
             self.view.cards_in_deck.config(state=DISABLED)
         except:
-            raise Exception("unable to get cards from deck")
+            self.show_notif("unable to get cards from deck")
 
     def removeDeck(self):
         try:
             self.model.removeDeck()
         except:
-            raise Exception("unable to remove deck")
+            self.show_notif("unable to remove deck")
 
     def addDeck(self):
         try:
             self.model.addDeck()
         except:
-            raise Exception("unable to add deck")
+            self.show_notif("unable to add deck")
 
     def display(self, comm):
         self.text_to_display = self.model.get_table(comm)
@@ -64,53 +64,60 @@ class Controller:
         self.view.text.insert(END, self.text_to_display)
         self.view.text.config(state=DISABLED)
 
+
+    def show_notif(self,text):
+        self.view.show_notif.config(state=NORMAL)
+        self.view.show_notif.delete('1.0', END)
+        self.view.show_notif.insert(END, text)
+        self.view.show_notif.config(state=DISABLED)
+
     def displayDecks(self):
         try:
             self.display(util.showAllDecks())
         except:
-            raise Exception("unable to get decks")
+            self.show_notif("unable to get decks")
 
     def displayCards(self):
         try:
             self.display(util.showAllCards())
         except:
-            raise Exception("unable to get cards")
+            self.show_notif("unable to get cards")
 
     def displayArenas(self):
         try:
             self.display(util.showAllArenas())
         except:
-            raise Exception("unable to get arenas")
+            self.show_notif("unable to get arenas")
 
     def displayPlayer(self):
         try:
             self.display(util.showAllPlayers())
         except:
-            raise Exception("unable to get players")
+            self.show_notif("unable to get players")
 
     def displayChests(self):
         try:
             self.display(util.showAllChests())
         except:
-            raise Exception("unable to get chests")
+            self.show_notif("unable to get chests")
 
     def addCard(self):
         try:
             self.model.addCard()
         except:
-            raise Exception("unable to add card")
+            self.show_notif("unable to add card")
 
     def removeCard(self):
         try:
             self.model.removeCard()
         except:
-            raise Exception("unable to remove card")
+            self.show_notif("unable to remove card")
 
     def updateDeckName(self):
         try:
             self.model.updateDeckName()
         except:
-            raise Exception("could not update deck name")
+            self.show_notif("could not update deck name")
 
 if __name__ == "__main__":
     root = Tk()

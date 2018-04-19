@@ -59,6 +59,9 @@ class Window(Frame):
         self.cards_in_deck = Text(self, height=30, width=60, state=DISABLED)
         self.cards_in_deck.place(x=600, y=250)
 
+        # notif arenas
+        self.show_notif = Text(self, height = 30, width = 60, state=DISABLED)
+        self.show_notif.place(x=800,y=50)
 
 
     def get_username(self):
