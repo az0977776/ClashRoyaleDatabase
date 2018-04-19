@@ -14,6 +14,8 @@ class Window(Frame):
         self.get_password()
 
         self.master.title("CLASH ROYALE")
+        frame2 = Frame(self, relief=RAISED, borderwidth=1)
+        frame2.pack(fill=X, expand=True)
         self.pack(fill=BOTH, expand=1)
 
         self.ok = Button(self, text="LOGIN")
@@ -25,13 +27,18 @@ class Window(Frame):
         self.show_deck = Button(self, text="DECKS")
 
         # read only display
-        self.show_cards.place(x=30,y=50)
+        # self.show_cards.place(x=30,y=50)
         self.ok.place(x=300, y=2)
         self.text.place(x=20, y=80)
-        self.show_arenas.place(x=100, y=50)
-        self.show_chests.place(x=180, y=50)
-        self.show_player.place(x=260, y=50)
-        self.show_deck.place(x=340, y=50)
+        # self.show_arenas.place(x=100, y=50)
+        # self.show_chests.place(x=180, y=50)
+        # self.show_player.place(x=260, y=50)
+        # self.show_deck.place(x=340, y=50)
+        self.show_arenas.pack(side=LEFT)
+        self.show_chests.pack(side=LEFT)
+        self.show_player.pack(side=LEFT)
+        self.show_deck.pack(side=LEFT)
+        self.show_cards.pack(side=LEFT)
 
         # adding/removing decks
         self.deck_add = Button(self, text="ADD DECK")
