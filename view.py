@@ -6,6 +6,7 @@ class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
+        self.master.title("CLASH ROYALE")
         self.grid()
         for r in range(10):
             self.master.rowconfigure(r, weight=1)
