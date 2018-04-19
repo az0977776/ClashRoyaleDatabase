@@ -133,6 +133,6 @@ class Controller:
 
 if __name__ == "__main__":
     root = Tk()
-    root.geometry("800x500")
+    root.geometry("1200x500")
     app = Controller(root)
     root.mainloop()
